@@ -1,0 +1,84 @@
+# Configuração do Sistema de Trading Autônomo Auto-Evolutivo
+# Sistema revolucionário para B3 - 100% IA
+
+system:
+  name: "Autonomous B3 Trading System"
+  version: "1.0.0"
+  mode: "demo"  # demo ou live
+  
+hardware:
+  use_gpu: true
+  gpu_memory_limit: 5500  # MB (deixa margem para o sistema)
+  cpu_threads: 8
+  enable_mixed_precision: true  # FP16 para economizar VRAM
+  
+market:
+  exchange: "B3"
+  instruments:
+    - "WIN$N"  # Mini-índice Bovespa
+    - "WDO$N"  # Mini-dólar
+    - "PETR4"  # Petrobras
+    - "VALE3"  # Vale
+    - "ITUB4"  # Itaú
+  timeframes: ["1m", "5m", "15m"]  # Multi-timeframe
+  
+metatrader5:
+  path: null  # Auto-detecta instalação
+  account: null  # Configurar com sua conta demo/real
+  password: null
+  server: null
+  
+self_evolution:
+  enabled: true
+  evaluation_interval: 100  # Avalia a cada 100 trades
+  min_accuracy_threshold: 0.65  # 65% de acurácia mínima
+  min_profit_factor: 1.5
+  max_drawdown: 0.15  # 15% máximo
+  evolution_method: "llm"  # llm, genetic, hybrid
+  llm_model: "llama3.2:3b"  # Modelo Ollama local
+  keep_versions: 10  # Mantém últimas 10 versões
+  
+sentiment_analysis:
+  enabled: true
+  emotions:
+    - "fear"        # Medo (vendas em pânico)
+    - "greed"       # Ganância (compras eufóricas)
+    - "uncertainty" # Indecisão (consolidação)
+    - "panic"       # Pânico (gaps, volume explosivo)
+    - "confidence"  # Confiança (tendência forte)
+  lookback_candles: 50  # Analisa últimas 50 velas
+  volume_weight: 0.4    # Peso do volume na análise
+  
+ai_models:
+  transformer:
+    d_model: 128
+    nhead: 8
+    num_layers: 4
+    dropout: 0.1
+  lstm:
+    units: [128, 64]
+    dropout: 0.2
+  reinforcement_learning:
+    algorithm: "PPO"  # Proximal Policy Optimization
+    learning_rate: 0.0003
+    gamma: 0.99
+    
+risk_management:
+  max_position_size: 0.02  # 2% do capital por trade
+  max_daily_loss: 0.05     # 5% perda máxima diária
+  max_open_positions: 3
+  stop_loss_atr_multiplier: 2.0
+  take_profit_atr_multiplier: 3.0
+  
+training:
+  initial_data_days: 365  # 1 ano de dados históricos
+  retrain_interval: 24    # Retreina a cada 24h
+  validation_split: 0.2
+  batch_size: 32
+  epochs: 50
+  
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  save_trades: true
+  save_predictions: true
+  log_file: "autonomous_trading_system/logs/system.log"

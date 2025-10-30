@@ -1,0 +1,57 @@
+# Sistema de Trading Autônomo Auto-Evolutivo para B3
+# Otimizado para RTX 3060 + 16GB RAM
+
+# Deep Learning & GPU
+tensorflow>=2.15.0
+torch>=2.1.0
+transformers>=4.35.0
+
+# Trading & Market Data
+MetaTrader5>=5.0.45
+pandas>=2.1.0
+numpy>=1.24.0
+ta>=0.11.0  # Technical Analysis library
+
+# Reinforcement Learning
+stable-baselines3>=2.2.0
+gymnasium>=0.29.0
+
+# LLM Local (Ollama integration)
+ollama>=0.1.0
+langchain>=0.1.0
+langchain-community>=0.0.10
+
+# Time Series & Forecasting
+prophet>=1.1.5
+neuralprophet>=0.7.0
+
+# Sentiment Analysis (Portuguese)
+nltk>=3.8.1
+textblob>=0.17.1
+vaderSentiment>=3.3.2
+
+# Utilities
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+requests>=2.31.0
+aiohttp>=3.9.0
+
+# Monitoring & Logging
+tensorboard>=2.15.0
+wandb>=0.16.0
+loguru>=0.7.2
+
+# Code Generation & Evolution
+autopep8>=2.0.4
+black>=23.12.0
+ast-grep>=0.1.0
+
+# Performance
+numba>=0.58.1
+joblib>=1.3.2
+psutil>=5.9.6
+
+# Visualization
+matplotlib>=3.8.0
+plotly>=5.18.0
+seaborn>=0.13.0
